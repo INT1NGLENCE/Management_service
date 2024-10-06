@@ -32,6 +32,7 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
     implementation("org.springdoc:springdoc-openapi-ui:1.8.0")
     implementation ("io.swagger:swagger-annotations:1.6.14")
+    // Gradle
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     /**
      * Database

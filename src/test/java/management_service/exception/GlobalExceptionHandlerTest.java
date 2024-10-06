@@ -98,38 +98,38 @@ public class GlobalExceptionHandlerTest {
 
     @Test
     public void testHandleInvalidTokenException() {
-        SignatureException exception = new SignatureException("Invalid JWT signature");
+        SignatureException exception = new SignatureException("JWT Exception");
         ResponseEntity<ErrorDto> response = globalExceptionHandler.handleInvalidTokenException(exception);
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
         assertNotNull(response.getBody());
-        assertEquals("Invalid JWT signature.", response.getBody().getMessage());
+        assertEquals("Invalid JWT signature. JWT Exception", response.getBody().getMessage());
     }
 
     @Test
     public void testHandleExpiredTokenException() {
-        ExpiredJwtException exception = new ExpiredJwtException(null, null, "Expired JWT token");
+        ExpiredJwtException exception = new ExpiredJwtException(null, null, "Expired JWT");
         ResponseEntity<ErrorDto> response = globalExceptionHandler.handleExpiredTokenException(exception);
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
         assertNotNull(response.getBody());
-        assertEquals("Expired JWT token.", response.getBody().getMessage());
+        assertEquals("Expired JWT token. Expired JWT", response.getBody().getMessage());
     }
 
     @Test
     public void testHandleMalformedJwtException() {
-        MalformedJwtException exception = new MalformedJwtException("Malformed JWT token");
+        MalformedJwtException exception = new MalformedJwtException("Malformed JWT");
         ResponseEntity<ErrorDto> response = globalExceptionHandler.handleExpiredTokenException(exception);
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
         assertNotNull(response.getBody());
-        assertEquals("Expired JWT token.", response.getBody().getMessage());
+        assertEquals("Expired JWT token. Malformed JWT", response.getBody().getMessage());
     }
 
     @Test
     public void testHandleUnsupportedTokenException() {
-        UnsupportedJwtException exception = new UnsupportedJwtException("Unsupported JWT token");
+        UnsupportedJwtException exception = new UnsupportedJwtException("Unsupported JWT");
         ResponseEntity<ErrorDto> response = globalExceptionHandler.handleUnsupportedTokenException(exception);
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
         assertNotNull(response.getBody());
-        assertEquals("Unsupported JWT token.", response.getBody().getMessage());
+        assertEquals("Unsupported JWT token. Unsupported JWT", response.getBody().getMessage());
     }
 
     @Test
@@ -138,6 +138,6 @@ public class GlobalExceptionHandlerTest {
         ResponseEntity<ErrorDto> response = globalExceptionHandler.handleUsernameNotFoundException(exception);
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
         assertNotNull(response.getBody());
-        assertEquals("Username not found.", response.getBody().getMessage());
+        assertEquals("Username not found. Username not found", response.getBody().getMessage());
     }
 }
